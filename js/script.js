@@ -55,10 +55,10 @@ const displayCategoryWiseData = (pets) => {
     <h2  class="card-title">${pet.breed}</h2>
     <p>${pet.pet_details.slice(0, 100)}</p>
     <div class="card-actions ">
-      <button class="btn select btn-primary">Add To Cart</button>
+      <button class="btn select ">Add To Cart</button>
          <button onclick=loadPetDetails('${
            pet.petId
-         }') class="btn btn-primary">Details</button>
+         }') class="btn">Details</button>
     </div>
   </div>
 </div>
@@ -94,7 +94,6 @@ const loadPetDetails = async (id) => {
 };
 
 const showPetDetails = async (details) => {
-  console.log(details);
   document.getElementById("pet_details").showModal();
   const detailsContainer = document.getElementById("details-container");
   detailsContainer.innerHTML = `

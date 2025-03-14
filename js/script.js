@@ -22,11 +22,15 @@ const displayPetCategory = (categories) => {
 
 //load category wise data
 const loadCategoryWiseData = async (id) => {
+  loaderShow("loading");
   const res = await fetch(
     `https://openapi.programming-hero.com/api/peddy/category/${id}`
   );
   const data = await res.json();
-  displayCategoryWiseData(data.data);
+  if (data.data) {
+    displayCategoryWiseData(data.data);
+    loaderHide("loading");
+  }
 };
 
 const displayCategoryWiseData = (pets) => {
@@ -69,6 +73,13 @@ const loadPetDetails = async (id) => {
   );
   const data = await res.json();
   console.log(data.petData);
+};
+
+const loaderShow = (id) => {
+  document.getElementById(id).style.display = "block";
+};
+const loaderHide = (id) => {
+  document.getElementById(id).style.display = "none";
 };
 
 loadPetCategory();

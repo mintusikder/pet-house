@@ -66,13 +66,22 @@ const displayCategoryWiseData = (pets) => {
     cardContainer.appendChild(cardDiv);
   });
 };
-
+// pet details
 const loadPetDetails = async (id) => {
   const res = await fetch(
     `https://openapi.programming-hero.com/api/peddy/pet/${id}`
   );
   const data = await res.json();
-  console.log(data.petData);
+  showPetDetails(data.petData);
+};
+
+const showPetDetails = async (details) => {
+  console.log(details);
+  document.getElementById("pet_details").showModal();
+  const detailsContainer = document.getElementById("details-container");
+  detailsContainer.innerHTML = `
+      <p>${details.breed}</p>
+      `;
 };
 
 const loaderShow = (id) => {

@@ -52,13 +52,23 @@ const displayCategoryWiseData = (pets) => {
     <p>${pet.pet_details.slice(0, 100)}</p>
     <div class="card-actions ">
       <button class="btn btn-primary">Add To Cart</button>
-         <button class="btn btn-primary">Details</button>
+         <button onclick=loadPetDetails('${
+           pet.petId
+         }') class="btn btn-primary">Details</button>
     </div>
   </div>
 </div>
           `;
     cardContainer.appendChild(cardDiv);
   });
+};
+
+const loadPetDetails = async (id) => {
+  const res = await fetch(
+    `https://openapi.programming-hero.com/api/peddy/pet/${id}`
+  );
+  const data = await res.json();
+  console.log(data.petData);
 };
 
 loadPetCategory();

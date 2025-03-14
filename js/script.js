@@ -80,7 +80,17 @@ const showPetDetails = async (details) => {
   document.getElementById("pet_details").showModal();
   const detailsContainer = document.getElementById("details-container");
   detailsContainer.innerHTML = `
-      <p>${details.breed}</p>
+      <div class="card bg-base-100 image-full  shadow-sm">
+  <figure>
+    <img class ="object-cover"
+      src="${details.image}"
+      alt="Shoes" />
+  </figure>
+  <div class="card-body">
+    <h2 class="card-title">${details.breed}</h2>
+    <p>${details.pet_details.slice(0,100)}</p>
+  </div>
+</div>
       `;
 };
 

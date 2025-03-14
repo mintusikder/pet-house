@@ -29,9 +29,37 @@ const loadCategoryWiseData = async (id) => {
   displayCategoryWiseData(data.data);
 };
 
-const displayCategoryWiseData = (pet) =>{
-        
-}
+const displayCategoryWiseData = (pets) => {
+  const cardContainer = document.getElementById("card-container");
+  if (pets.length === 0) {
+    cardContainer.innerHTML = `
+        <h2 class="text-center py-12 text-2xl font-bold col-span-full">Oops!! Sorry, There is no pet here</h2>
+    `;
+    return;
+  }
+  cardContainer.innerHTML = "";
+  pets.forEach((pet) => {
+    const cardDiv = document.createElement("div");
+    cardDiv.innerHTML = `
+              <div class="card bg-base-100  shadow-sm">
+  <figure>
+    <img class ="h-[190px] w-full"
+      src="${pet.image}"
+      alt="Shoes" />
+  </figure>
+  <div class="card-body">
+    <h2  class="card-title">${pet.breed}</h2>
+    <p>${pet.pet_details.slice(0, 100)}</p>
+    <div class="card-actions ">
+      <button class="btn btn-primary">Add To Cart</button>
+         <button class="btn btn-primary">Details</button>
+    </div>
+  </div>
+</div>
+          `;
+    cardContainer.appendChild(cardDiv);
+  });
+};
 
 loadPetCategory();
-loadCategoryWiseData("cat")
+loadCategoryWiseData("cat");

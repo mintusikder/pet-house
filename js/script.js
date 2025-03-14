@@ -55,7 +55,7 @@ const displayCategoryWiseData = (pets) => {
     <h2  class="card-title">${pet.breed}</h2>
     <p>${pet.pet_details.slice(0, 100)}</p>
     <div class="card-actions ">
-      <button class="btn btn-primary">Add To Cart</button>
+      <button class="btn select btn-primary">Add To Cart</button>
          <button onclick=loadPetDetails('${
            pet.petId
          }') class="btn btn-primary">Details</button>
@@ -65,6 +65,24 @@ const displayCategoryWiseData = (pets) => {
           `;
     cardContainer.appendChild(cardDiv);
   });
+
+  const allSelectBtn = document.getElementsByClassName("select");
+  // console.log(allSelectBtn);
+  for (const button of allSelectBtn) {
+    button.addEventListener("click", (event) => {
+      const title = event.target.parentNode.parentNode.childNodes[1].innerText;
+
+      const titleContainer = document.getElementById("title-container");
+      const titleDiv = document.createElement("div");
+      titleDiv.innerHTML = `
+      <li>${title}</li>
+      `;
+      titleContainer.appendChild(titleDiv);
+      const previousCount = getItemValue("item");
+      const sum = previousCount + 1;
+      document.getElementById("item").innerText = sum;
+    });
+  }
 };
 // pet details
 const loadPetDetails = async (id) => {
@@ -88,17 +106,23 @@ const showPetDetails = async (details) => {
   </figure>
   <div class="card-body">
     <h2 class="card-title">${details.breed}</h2>
-    <p>${details.pet_details.slice(0,100)}</p>
+    <p>${details.pet_details.slice(0, 100)}</p>
   </div>
 </div>
       `;
 };
-
+// spinner show hide function
 const loaderShow = (id) => {
   document.getElementById(id).style.display = "block";
 };
 const loaderHide = (id) => {
   document.getElementById(id).style.display = "none";
+};
+
+const getItemValue = (id) => {
+  const element = document.getElementById(id).innerText;
+  const convertValue = parseInt(element);
+  return convertValue;
 };
 
 loadPetCategory();

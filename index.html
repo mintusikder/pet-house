@@ -37,7 +37,7 @@
                       d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
                     />
                   </svg>
-                  <span class="badge badge-sm indicator-item">8</span>
+                  <span id="item" class="badge badge-sm indicator-item">8</span>
                 </div>
               </div>
             </div>
@@ -45,6 +45,9 @@
         </div>
       </nav>
     </header>
+    <ul class="max-w-7xl mx-auto text-2xl" id="title-container">
+
+    </ul>
     <main class="max-w-7xl mx-auto">
       <!-- category section -->
       <section
@@ -66,21 +69,18 @@
         <span class="loading loading-spinner loading-xl"></span>
       </div>
 
-
       <!-- Open the modal using ID.showModal() method -->
-<!-- <button class="btn" onclick="pet_details.showModal()">open modal</button> -->
-<dialog id="pet_details" class="modal">
-  <div class="modal-box">
- <div id="details-container">
-
- </div>
-    <div class="modal-action">
-      <form method="dialog">
-        <button class="btn btn-block">Cancel</button>
-      </form>
-    </div>
-  </div>
-</dialog>
+      <!-- <button class="btn" onclick="pet_details.showModal()">open modal</button> -->
+      <dialog id="pet_details" class="modal">
+        <div class="modal-box">
+          <div id="details-container"></div>
+          <div class="modal-action">
+            <form method="dialog">
+              <button class="btn btn-block">Cancel</button>
+            </form>
+          </div>
+        </div>
+      </dialog>
     </main>
     <script src="./js/script.js"></script>
   </body>
